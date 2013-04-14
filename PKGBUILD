@@ -1,20 +1,16 @@
 # Maintainer: Nick Vandal <vandalusna@gmail.com>
 _pack=lpsolve
+pkgname=octave-${_pack}
 _majorver=5.5
 _minorver=2
 _levelver=0
-pkgname=octave-${_pack}
 pkgver="${_majorver}.${_minorver}.${_levelver}"
 pkgrel=1
 pkgdesc="Wrapper to lp_solve for Octave. Mixed Integer Linear Programming (MILP) solver lp_solve solves pure linear, (mixed) integer/binary, semi-cont and special ordered sets (SOS) models"
-url="http://lpsolve.sourceforge.net/5.5/Octave.htm"
 arch=('x86_64' 'i686')
+url="http://lpsolve.sourceforge.net/5.5/Octave.htm"
 license=('LGPL')
 depends=('lpsolve' 'octave')
-makedepends=()
-conflicts=()
-replaces=()
-backup=()
 install=$pkgname.install
 source=("http://downloads.sourceforge.net/project/lpsolve/lpsolve/${pkgver}/lp_solve_${pkgver}_octave_source.tar.gz"
         "COPYING"
