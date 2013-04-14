@@ -6,7 +6,7 @@ _levelver=0
 pkgname=octave-${_pack}
 pkgver="${_majorver}.${_minorver}.${_levelver}"
 pkgrel=1
-pkgdesc="octave-lpsolve is a driver program to call lpsolve from Octave via a dynamic linked function"
+pkgdesc="Call lpsolve  from Octave via a dynamic linked function"
 url="http://lpsolve.sourceforge.net/5.5/Octave.htm"
 arch=('x86_64' 'i686')
 license=('LGPL')
@@ -20,12 +20,15 @@ source=("http://downloads.sourceforge.net/project/lpsolve/lpsolve/${pkgver}/lp_s
         "COPYING"
         "DESCRIPTION"
         "INDEX"
-        "Makefile")
+        "Makefile"
+        "short-circuit.patch")
 md5sums=('b8ea22788d119bcd514d057a74f4c430'
          'ae8eb7d0e748a977e2320ff70d4b6550'
          'b75b3833aaeebb04730db156afe61838'
          'dd8acd28d9ea11554dd2b0eddfb47631'
-         '07aef4ffcac5cf5d36bb0284bc04ebce')
+         '07aef4ffcac5cf5d36bb0284bc04ebce'
+         '896633f683bd740b643a21a6b4ce2ed1')
+
 _archive=${_pack}-${_majorver}.${_minorver}.tar.gz
 
 prepare()
@@ -35,6 +38,7 @@ prepare()
     cp "${startdir}/"{COPYING,DESCRIPTION,INDEX} "${srcdir}/package/"
     cp "${startdir}/Makefile" "${srcdir}/package/src/"
     cd "${srcdir}/lp_solve_${_majorver}/extra/octave/${_pack}/"
+    patch -p0 < "${startdir}/short-circuit.patch"
     cp changes "${srcdir}/package/ChangeLog"
     cp Octave.htm "${srcdir}/package/doc/"
     cp *.m "${srcdir}/package/inst/"
