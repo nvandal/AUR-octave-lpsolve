@@ -11,7 +11,6 @@ url="http://lpsolve.sourceforge.net"
 arch=('x86_64' 'i686')
 license=('LGPL')
 depends=('lpsolve' 'octave')
-optdepends=('xargs' 'jikes')
 makedepends=()
 conflicts=()
 replaces=()
